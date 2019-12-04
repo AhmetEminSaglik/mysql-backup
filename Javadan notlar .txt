@@ -1,0 +1,23 @@
+btn.setBorder(BorderFactory.createLineBorder(Color.GRAY, 4));
+
+///////////////////////////////////////////////////////////////////////////
+   AudioInputStream stream = AudioSystem.getAudioInputStream(new File("src/Gui/baslangic_muzigi.wav"));
+            clip = AudioSystem.getClip();
+            clip.open(stream);
+            clip.start();
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+--------
+if (getBeg().clip.isRunning()) {
+     getBeg().clip.stop();
+				}
+///////////////////////////////////////////////////////////////////////////
+
+ if (e.getSource() == getBeg().getCikis()) {
+                int cevap = JOptionPane.showConfirmDialog(null, "Çýkmak istediðinize emin misiniz ?", "Çýkýþ Sayfasi", 2);
+                if (cevap == 0) {
+                    System.exit(0);
+                }
+
+                // 0=yes, 1=no, 2=cancel
+            }
+///////////////////////////////////////////////////////////////////////////
