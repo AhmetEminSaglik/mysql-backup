@@ -25,3 +25,69 @@ int cevap = JOptionPane.showConfirmDialog(null, "Oyunuz kaydedilmeyecektir çýkma
 ///////////////////////////////////////////////////////////////////////////
      jf_oyun_kurallari.setUndecorated(true); -->  yukardan kapatma küçültmeyi kaldýrýr
 ///////////////////////////////////////////////////////////////////////////
+  jf_oe.setEnabled(false); --> Pencereyi kaydýrmayý engeller 
+///////////////////////////////////////////////////////////////////////////
+jf_ayarlar.setUndecorated(true); //   olduðu yerde --> jf_ayarlar.setVisible(true); bu olmamasý gerekiyor
+///////////////////////////////////////////////////////////////////////////
+eðer butonlar mouse üzerine gelince görünüyorsa ve panel&layeredpane setlayout(null) ise
+arka plan rengini deðiþtir
+///////////////////////////////////////////////////////////////////////////
+
+StudentNo_txt.getDocument().addDocumentListener(action); 
+StudentNo_txt.getDocument().putProperty("StudentNo_BookId_txt", 1); // first one is key , the other one is value
+Yukarýdaki ikisi  ile jtext fielde yazý yazdýðýmýzda direk algýlamasýný saðlar
+
+Yanlýz action için þunlarý da eklememiz gerekir: 
+public class Actions_MainGui implementsDocumentListener {}
+
+    @Override
+    public void insertUpdate(DocumentEvent e) {
+
+        // e.getDocument().getProperty ("HERE",value) --> HERE must be same I dont know why  but we differenciate witdh value
+        if (e.getDocument().getProperty("StudentNo_BookId_txt").equals(1)) {// first for student no
+
+            System.out.println("----Alinan kelime :" + getMg().getStudentNo_txt().getText());
+        }
+
+        if (e.getDocument().getProperty("StudentNo_BookId_txt").equals(2)) { // second for bookId
+            System.out.println("silindikten sonra :" + getMg().getBookId_txt().getText());
+        }
+
+        //    System.out.println("getMg().getStudentNo_txt() : " + getMg().getStudentNo_txt().getDocument());
+    }
+
+    @Override
+    public void removeUpdate(DocumentEvent e) {
+        if (e.getDocument().getProperty("StudentNo_BookId_txt").equals(1)) { // second for bookId
+            System.out.println("----Alinan kelime :" + getMg().getStudentNo_txt().getText());
+        }
+        if (e.getDocument().getProperty("StudentNo_BookId_txt").equals(2)) { // second for bookId
+            System.out.println("silindikten sonra :" + getMg().getBookId_txt().getText());
+        }
+    }
+
+    @Override
+    public void changedUpdate(DocumentEvent e) {
+        System.out.println("changedUpdate");
+    }
+
+StudentNo_txt.addActionListener(action);
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+
+
