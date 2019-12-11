@@ -84,14 +84,38 @@ https://flatuicolors.com/
 güzelbir kýrmýzý --> (231,76,60)
 gri--> (52,73,94) --> asfalt girisi
 ///////////////////////////////////////////////////////////////////////////
-1-) YONTEM : Jpasword için --> String.valueOf(jpassword.txt);
+1-) YONTEM : Jpasword için --> String.valueOf(jpassword.getPassword); --> (gizli)
 2-) YONTEM : password.charAt(i) == JPASSWORD.getPassword()[i]; 
 
 ///////////////////////////////////////////////////////////////////////////
-
+jpaneli extends edince kaybedemiyoruz (en azýndan ben yapamadým)
+jframe jpaneli ekleyince onu setvisible'ný kapatýp baþka jp açabiliyoruz
 
 ///////////////////////////////////////////////////////////////////////////
+public void animationCreatorCaption() {
+        Thread t1 = new Thread() {  //--> thread oluþturma temelde :   	 Thread t1 = new Thread(){ public void run() {} }; t1.start
+            public void run() {
+                int index = -250;
+                try {
+                    while (true) {
+                        for (int i = 885; i > index; i--) {
+                            Thread.sleep(10 );
+                            mg.getCreatorCaption().setLocation(i, 500);
 
+                        }
+                        /*for (int i = index; i < 600; i++) {
+                            Thread.sleep(2);
+                            mg.getCreatorCaption().setLocation(i, 600);
+                        }*/
+                    }
+                } catch (Exception e) {
+                    System.out.println(" hata kodu : " + e);
+                }
+            }
+        };
+        t1.start();
+
+    }
 ///////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
