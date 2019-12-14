@@ -40,6 +40,7 @@ Yukarýdaki ikisi  ile jtext fielde yazý yazdýðýmýzda direk algýlamasýný saðlar
 Yanlýz action için þunlarý da eklememiz gerekir: 
 public class Actions_MainGui implementsDocumentListener {}
 
+ 
     @Override
     public void insertUpdate(DocumentEvent e) {
 
@@ -117,7 +118,22 @@ public void animationCreatorCaption() {
 
     }
 ///////////////////////////////////////////////////////////////////////////
+TAB MENU OLUÞTURMA
 
+if (jtp == null) {
+            jtp = new JTabbedPane();
+            jtp.setBounds(270, 180, 800, 500);
+            Icon iconProfile = new ImageIcon("src/Images/profile24px.png");
+            jtp.addTab("PROFIL", iconProfile, getjProfil(), "Profil Menüsü Ýþlemleri"); //-->  
+            Icon iconMail = new ImageIcon("src/Images/email24px.png");
+            jtp.addTab("MAIL", iconMail, getJMail(), "Mail Menüsü iþlemleri");
+            Icon iconMeeting = new ImageIcon("src/Images/meeting24px.png");
+            jtp.addTab("GELEN KUTUSU", iconMeeting, getJMessageBox(), "Gelen Kutusu Menüsü Ýþlemleri");
+            jtp.setFont(new Font("verdana", Font.BOLD, 24));
+            jtp.setBorder(BorderFactory.createLineBorder(Color.yellow, 0));
+            jtp.setForeground(new Color(0, 165, 245));
+
+        }
 ///////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
