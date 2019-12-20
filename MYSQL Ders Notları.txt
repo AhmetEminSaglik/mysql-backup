@@ -1,0 +1,51 @@
+mysql -u root -p
+----------------------------------------------------------------------------------------------
+create database database_name;
+use database_name;
+crate table table_name(id int ,ad varchar(50), bolum varchar(50) , yas int )
+insert into database_name values(1,'Ahmet', 'Yazýlým',21);
+
+select * from table_name; --> bütün satýr ve sutunlarý getirir
+select name from table_name; --> name deki sutunu getirir
+select id, name  from table_name;
+
+select distinct name from table_name;		// bu ikisi arasýndaki fark nedir ?
+select name from table_name;
+
+select id from table_name where name='aman';
+
+select *from faculty where name!='Aman';
+
+select  * from faculty limit 3,2; // 3 sýradan sonraki 2 satýrý  ele alýr (ekrana yazdýrýr)
+
+select * from faculty order by id desc limit 1,3; // yüksek id den düþük id'ye doðru sýralar
+ select * from category where name like 'A%';
+select * from category where name like '%r_';
+
+select * from category order by id  asc  limit 10; // asc --> düþükten yükseðe sýralar
+select * from category order by id  desc limit 10; // desc --> yüksekten düþüpe sýralar
+	
+
+select count(*)  from ilahiyat__faculty cross join tecnology_faculty //burada sayýsýný gösterir // ortak noktasý olmasýna gerek yok burasý için
+select * from ilahiyat__faculty cross join tecnology_faculty // önce ilayhiyatý sonra tecnology bilgileri yazar  (kombinasyonu oluþur) 
+select * from tecnology_faculty cross join ilahiyat__faculty where ilahiyat__faculty.id=1; //
+select d.Name_of_lessons, f.NAME_OF_FACULTY from dersler d INNER JOIN faculty f ON d.id=f.id; //  
+select d.Name_of_lessons, f.NAME_OF_FACULTY from BirinciTabloAdi BirinciTabloÝstediðinÝsmiVer INNER JOIN ÝkinciTabloAdi ÝkinciTabloÝstediðinÝsmiVer ON d.id=f.id;  
+
+select s.NAME,s.SURNAME, d.Name_of_lessons from Student s INNER JOIN  dersler d ON d.id=s.id; // ad soyad  ve dersler tablosundan toplamda 3 class oluþur ve id'leri eþit olur (ON d.id=s.id; --> dan kaynaklanýr)
+select s.NAME,s.SURNAME, d.Name_of_lessons from Student s INNER JOIN  dersler d // ad soyad  ve dersler tablosundan toplamda 3 class oluþur. // --> karþýlaþtýrma olmayacaksa ON yazýlmasýna gerek yoktur(aksi halde hata alýrýz)
+
+select s.id,s.Name, s.SURNAME,d.id, d.Name_of_lessons from Student s INNER JOIN dersler d where  s.id-d.id>1; //  
+select s.id,s.Name, s.SURNAME,d.id, d.Name_of_lessons from Student s INNER JOIN dersler d where d.id%s.id>3;  // 
+
+ select s.id,s.Name,s.SURNAME,d.id,d.Name_of_lessons from Student s RIGHT JOIN dersler d ON d.id=s.id; //RIGHT yada LEFT JOIN' DE   seçilen bölgenin tamamý yazýlana kadar eklenir soldaki deðer boþ bile olsa && ve ON deyip bir koþul belirtmeliyiz
+
+
+********************************************************************************************************************************************************************************************
+	select  s.id as "Student id", s.NAME as "Student Name", d.id as "lesson id", d.Name_of_lessons as "lesson Name" from dersler d, Student s where d.id=s.id; //
+ile 
+	select  s.id as "Student id", s.NAME as "Student Name", d.id as "lesson id", d.Name_of_lessons as "lesson Name" from dersler d INNER JOIN Student s ON d.id=s.id; 
+yukarýdaki iki komutta ayný iþlemi yapmaktadýr( en azýndan görünen kýsým olarak)
+********************************************************************************************************************************************************************************************
+
+VÝDEO 10 DA KALDIM 
