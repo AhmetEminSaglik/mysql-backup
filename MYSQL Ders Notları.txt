@@ -1,8 +1,34 @@
-mysql -u root -p
+	mysql -u root -p
 ----------------------------------------------------------------------------------------------
 create database database_name;
+drop database database_name;  
+
 use database_name;
-crate table table_name(id int ,ad varchar(50), bolum varchar(50) , yas int )
+create table table_name(id int ,ad varchar(50), bolum varchar(50) , yas int ) //--> bir tablo en az 1 sutundan oluþmalýdýr o yüzden tek baþýna table ekleyemiyoruz
+------------------------------------
+RENAME TABLE  test to udemy; // --> test tablosunun ismini udemy yapar
+------------------------------------
+ALTER TABLE  table_name ADD COLUMN()
+ örnek :  ALTER TABLE test ADD COLUMN(surname VARCHAR(50), yas INT(10));  
+
+*********************************************************************
+DESCRIBE table_name = EXPLAIN table_name = SHOW FIELDS FROM table_name= SHOW COLUMNS FROM table_name //--> aynýlar 
+*********************************************************************
+ALTER TABLE faculty ADD COLUMN Email  VARCHAR(50) AFTER name; //--> name column'dan sonrasýna  Email column'unu oluþturup ekler
+ALTER TABLE faculty ADD COLUMN silinecek_deneme_amacli_ekleniliyor VARCHAR(50) FIRST; --> en baþa column ekler first komudu ile 
+ALTER TABLE faculty DROP silinecek_deneme_amacli_ekleniliyor; //--> dosyayý siler
+(ALTER --> TABLOYU ~~ MODÝFY  girdileri deðiþtirir)
+ALTER TABLE faculty MODIFY q2 VARCHAR(100); --> deðiþkeni deðiþtirir 
+*********************************************************************
+ALTER TABLE faculty RENAME COLUMN id to id2; --> (þuan mysql de çalýþmýyor ama doðru ) ve column ismini deðiþtirir
+
+ALTER TABLE faculty CHANGE  id id2 int not null; // --> id'yi id2 yapar 
+--> NOT : eðer id primary key ise   deðerler gider
+
+*********************************************************************
+UPDATE faculty SET id=3 where name='Mehmet'; // -->   degeri degistirir
+*********************************************************************
+
 insert into database_name values(1,'Ahmet', 'Yazýlým',21);
 
 select * from table_name; --> bütün satýr ve sutunlarý getirir
@@ -48,4 +74,26 @@ ile
 yukarýdaki iki komutta ayný iþlemi yapmaktadýr( en azýndan görünen kýsým olarak)
 ********************************************************************************************************************************************************************************************
 
+ select c.id as "Category id", c.name as "Category Name", m.id as "Meta id", m.meta as "META" from category c, meta m where c.id=m.id+2;
+ select c.id as "Category id", c.name as "Category Name", m.id as "Meta id", m.meta as "META" from category c, meta m ORDER BY c.id DESC;
+********************************************************************************************************************************************************************************************
+ select c.id as "Category id", c.name as "Category Name", m.id as "Meta id", m.meta as "META" from category c, meta m ORDER BY c.id ASC, m.id DESC limit 30;
+//c.id'sini düþükten yükseðe, m.id' de yüksekten düþüðe doðru sýralar  --> ARADA VÝRGÜL OLMAK ZORUNDA
+********************************************************************************************************************************************************************************************
+ select c.id as "Category id", c.name as "Category Name", m.id as "Meta id", m.meta as "META" from category c, meta m where m.id%2=0 and c.id%2=1 ORDER BY c.id ASC, m.id DESC limit 20;
+ önce where koþulu sonra order by koþulu yazýlýr
+********************************************************************************************************************************************************************************************
+select id,name, count(*) from category limit 10;// --> adet sayýsýný gösterir
+----------------------------------------------------------------------------
+ select id ,count(*) from category GROUP BY  id limit 10; // 
+
+select count(*) users; 					// --> kayýt sayýsýný gösterir
+select id,count(*) from  users GROUP BY id limit	//--> id yi gruplar
+select id,count(*) from  users; 			// --> toplam satýr sayýsýný yazdýrýr;
+
+
+********************************************************************************************************************************************************************************************
+
 VÝDEO 10 DA KALDIM 
+
+
