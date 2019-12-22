@@ -110,3 +110,38 @@ VÝDEO 10 DA KALDIM
 
 
 select games.id as 'Oyun id' , count(comments.comment) as 'Yorum sayisi', games.name as 'Oyun adý',  comments.comment as 'Yorumlar' from games INNER JOIN comments ON games.id=comments.gameid order by games.id limit 10; //--> 
+
+select count(comments.comment) as 'Yorum sayisi' ,  games.name as 'Oyun adý' FROM games INNER JOIN comments ON games.id=comments.gameid  where games.name LIKE '_i%' GROUP BY games.id //
+
+
+
+
+/*select COUNT(*) as 'Yorum sayýsý', category.name as 'Kategori adý' from category INNER JOIN games ON category.id=games.category INNER JOIN comments on games.id=comments.gameid GROUP BY category
+yorum sayýsý--> categori ýnner games , ýnner comments  group by category
+kullanýcý adý kullanýcý id ve yaptýðý yorum sayýsý*/
+select  users.id as 'kullanýcý id',users.nick as 'Kullanýcý adý', COUNT(*) as 'kullanýcýnýn yaptýðý yorum sayýsý'  from users INNER JOIN comments ON comments.userid=users.id GROUP BY users.id ORDER BY users. ASC
+
+HAVING --> GROUP BY 'dan sonra where yerine kullanýlýr
+
+
+
+
+
+
+
+
+/*select COUNT(*) as 'Yorum sayýsý', category.name as 'Kategori adý' from category INNER JOIN games ON category.id=games.category INNER JOIN comments on games.id=comments.gameid GROUP BY category
+yorum sayýsý--> categori ýnner games , ýnner comments  group by category
+kullanýcý adý kullanýcý id ve yaptýðý yorum sayýsý*/
+select  users.id as 'kullanýcý id',users.nick as 'Kullanýcý adý', users.ip as 'ip', COUNT(*) as 'kullanýcýnýn yaptýðý yorum sayýsý'  from users INNER JOIN comments ON comments.userid=users.id  LIKE '88%' GROUP BY users.id  
+
+
+
+
+*********************************************************************************************************************************************************
+	
+select  users.id as 'kullanýcý id',users.nick as 'Kullanýcý adý', users.ip as 'ip', COUNT(*) as 'kullanýcýnýn yaptýðý yorum sayýsý'  from users 
+INNER JOIN comments ON comments.userid=users.id 
+GROUP BY users.id  
+HAVING users.ip LIKE '88%'
+*********************************************************************************************************************************************************
