@@ -95,18 +95,21 @@ select id,count(*) from  users; 			// --> toplam satýr sayýsýný yazdýrýr;
 ********************************************************************************************************************************************************************************************
 
 VÝDEO 10 DA KALDIM 
-
-
-
-
-
-
+********************************************************************************************************************************************************************************************
+********************************************************************************************************************************************************************************************
+********************************************************************************************************************************************************************************************
+********************************************************************************************************************************************************************************************
+********************************************************************************************************************************************************************************************
+********************************************************************************************************************************************************************************************
+********************************************************************************************************************************************************************************************
+********************************************************************************************************************************************************************************************
+********************************************************************************************************************************************************************************************
 
  select count(g.id),g.id as "Game id", g.name as "Game Name" , c.id as "Comment id", c.comment as "Comment from users", c.gameid as "gameid~in comment" from games g,comments c  where c.gameid=g.id group by g.id limit 10;
 
 
  select count(g.id), g.name as "Game Name" from games g,comments c  where c.gameid=g.id group by g.id order by  g.name ASC ;--> " 
- select count(games.id) as 'Yorum Sayisi' , games.name as 'Oyun Adý' from comments INNER JOIN games ON games.id=comments.gameid GROUP BY games.id ORDER BY games.name limit 10;
+ select count(g.id),g.id as "Game id", g.name as "Game Name" , c.id as "Comment id", c.comment as "Comment from users", c.gameid as "gameid~in comment" from games g,comments c  where c.gameid=g.id group by g.id limit 10;
 
 
 select games.id as 'Oyun id' , count(comments.comment) as 'Yorum sayisi', games.name as 'Oyun adý',  comments.comment as 'Yorumlar' from games INNER JOIN comments ON games.id=comments.gameid order by games.id limit 10; //--> 
@@ -145,3 +148,22 @@ INNER JOIN comments ON comments.userid=users.id
 GROUP BY users.id  
 HAVING users.ip LIKE '88%'
 *********************************************************************************************************************************************************
+
+
+
+
+Öðrenciler tablosundaki sýnýflarýn adýný listeleyiniz.(Not her sýnýf adý birkez gösterilsin.)--> select distinct sinif from ogrenci
+
+Öðrenci tablosundaki öðrencinin adýný ve soyadýný birleþtirip, adsoyad olarak listeleyiniz. (as kullaným örneði)
+
+
+select ograd+ogrsoyad as 'Ad Soyad' from ogrenci
+ 
+
+Öðrenci tablosunda adý Fidan, Ýsmail ve Leyla olan öðrencileri listeleyiniz. --> select * from ogrenci where ograd in ('Fidan','Ýsmail','Leyla')
+
+
+ Öðrenci tablosundaki öðrencilerden adý A, D ve K ile baþlayan öðrencileri listeleyiniz.--> select * from ogrenci where ograd like '[ADK]%'
+
+
+Öðrenci tablosunda doðum yýlý 1989 olan öðrencileri listeleyiniz.(Not: veritabanýnda tarihler ay/gün/yýl þeklinde sorgulanýr)-- > select * from ogrenci where dtarih between '01/01/1989' and '12/31/1989'

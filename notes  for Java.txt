@@ -135,7 +135,26 @@ if (jtp == null) {
 
         }
 ///////////////////////////////////////////////////////////////////////////
+ if (sp == null) {//--> JScrolPane sp; 'den geliyor 
+            sp = new JScrollPane(getTbl());
+            sp.setBounds(LeftSpace, txtTopSpace + txtHeight * 2, 750, 350);
+            sp.setHorizontalScrollBarPolicy(sp.HORIZONTAL_SCROLLBAR_ALWAYS);// yatay olarak her zaman 
+            //sp.setVerticalScrollBarPolicy(sp.VERTICAL_SCROLLBAR_ALWAYS);
 
+        }
 ///////////////////////////////////////////////////////////////////////////
+    tbl.getColumnModel().getColumn(0).setPreferredWidth(100);	  // --> table colum width'ini ayarlar
 
-
+	if (tbl == null) {
+            tbl = new JTable(DataForTable, HeaderOfTable);
+            tbl.setDefaultEditor(Object.class, null);
+            tbl.setCursor(new Cursor(12));
+            tbl.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+            // {"Öðrenci No", "Kitap Barko No", "Kitap Adý", "Kitabýn Alýndýðý Tarih", "Borç (TL)"};
+            tbl.getColumnModel().getColumn(0).setPreferredWidth(100);
+            tbl.getColumnModel().getColumn(1).setPreferredWidth(250);
+            tbl.getColumnModel().getColumn(2).setPreferredWidth(450);
+            tbl.getColumnModel().getColumn(3).setPreferredWidth(250);
+            tbl.getColumnModel().getColumn(4).setPreferredWidth(200);
+            tbl.setFont(lblFont);
+        }
