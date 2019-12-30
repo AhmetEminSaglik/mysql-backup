@@ -31,6 +31,81 @@ use okul select <sutun_name1>, <sutun_name32 farketmez istediðin sutun ismi> fro
 ////////////////////////////////////////////////////////////
 use Kitaplik select * from Kitap where KitapAd='Palto' --> kitap adý Palto olaný getirdi
 ////////////////////////////////////////////////////////////
+Öðrenciler tablosundaki sýnýflarýn adýný listeleyiniz.(Not her sýnýf adý birkez gösterilsin.)--> select distinct sinif from ogrenci
+
+Öðrenci tablosundaki öðrencinin adýný ve soyadýný birleþtirip, adsoyad olarak listeleyiniz. (as kullaným örneði)
+
+
+select ograd+ogrsoyad as 'Ad Soyad' from ogrenci
+ 
+
+Öðrenci tablosunda adý Fidan, Ýsmail ve Leyla olan öðrencileri listeleyiniz. --> select * from ogrenci where ograd in ('Fidan','Ýsmail','Leyla')
+
+
+ Öðrenci tablosundaki öðrencilerden adý A, D ve K ile baþlayan öðrencileri listeleyiniz.--> select * from ogrenci where ograd like '[ADK]%'
+
+
+Öðrenci tablosunda doðum yýlý 1989 olan öðrencileri listeleyiniz.(Not: veritabanýnda tarihler ay/gün/yýl þeklinde sorgulanýr)-- > select * from ogrenci where dtarih between '01/01/1989' and '12/31/1989'
+////////////////////////////////////////////////////////////
+select  top 10 ograd as 'ad' , ogrsoyad as 'soyad', dtarih as 'Doðum Tarihi' from ogrenci 
+////////////////////////////////////////////////////////////
+select * from ogrenci order by newid()   -->Öðrencileri her sorgulamada sýralamasý farklý olacak þekilde  rastgele listeleyin.
+////////////////////////////////////////////////////////////
+select top 1 *from ogrenci where sinif='10A' order by newid() 
+////////////////////////////////////////////////////////////
+/*select top 1 *from ogrenci where sinif='10A'  order by newid() */
+////////////////////////////////////////////////////////////
+insert into yazar (yazarad,yazarsoyad) values ('Kemal','UYUMAZ') --> Yazar tablosunu KEMAL UYUMAZ isimli yazarý ekleyin.
+////////////////////////////////////////////////////////////
+INSERT INTO yazar (yazarad,yazarsoyad) select top 1  ograd,ogrsoyad from ogrenci order by newid()--> Öðrenci tablosundaki rastgele bir öðrenciyi yazarlar tablosuna yazar olarak ekleyiniz.
+////////////////////////////////////////////////////////////
+/*INSERT INTO YAZAR (YAZARAD,YAZARSOYAD) VALUES('Nurettin','BELLEK') select @@IDENTITY AS 'YAZARIN EKLENDÝÐÝ NUMARA' -->Nurettin Belek isimli yazarý ekleyip yazar numarasýný yazdýrýnýz.(Not: Otomatik arttýrmada son arttýrýlan deðer @@IDENTITY deðiþkeni içinde tutulur.)*/  -->BU ARADA BÜYÜK YAZI DA OLUYOR SIKINTI ÇIKARMIYOR 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<<< UPDATE ÝÇÝN ÖNEMLÝ BÝR NOT >>>
+-->NOT:update sorgusunda dikkat edilmesi gereken en önemli husus þart kýsmýdýr. þart yazýlmazsa güncelleme iþlemine tüm kayýtlar dahil edilir.
+////////////////////////////////////////////////////////////
+/* UPDATE ogrenci set sinif ='10C' where ogrno=3 --> 10B sýnýfýndaki öðrenci numarasý 3 olan öðrenciyi 10C sýnýfýna geçirin.*/
+////////////////////////////////////////////////////////////
+ /*update ogrenci  set  sinif='10A' where sinif = '9A' -->9A sýnýfýndaki tüm öðrencileri 10A sýnýfýna aktarýn */
+////////////////////////////////////////////////////////////
+ /*update ogrenci set puan=puan+5 -->  Tüm öðrencilerin puanýný 5 puan arttýrýn.*/
+////////////////////////////////////////////////////////////
+ /*NOT 1: DELETE sorgusunda dikkat edilmesi gereken en önemli husus þart kýsmýdýr. þart yazýlmazsa silme iþlemine tüm kayýtlar dahil edilir.*/
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<<<   DELETE SORGULARI   >>>
+NOT 1: DELETE sorgusunda dikkat edilmesi gereken en önemli husus þart kýsmýdýr. þart yazýlmazsa silme iþlemine tüm kayýtlar dahil edilir.
+////////////////////////////////////////////////////////////
+/*delete  from yazar where yazarno=25 --> 25 numaralý yazarý silin. */
+////////////////////////////////////////////////////////////
+ /*Select sorgularý içinde deðeri null olan kayýtlarý ararken alanadý=null olarak arama yapýlamaz.  Null olan alanlarý aramak için is null ifadesi kullanýlýr.*/
+////////////////////////////////////////////////////////////
+select * from ogrenci where dtarih is null --> doðum tarihi null olanlar listelenir
+////////////////////////////////////////////////////////////
+/*select kitapadi, tur.turadi from kitap INNER JOIN tur ON kitap.turno=tur.turno where turadi in('fýkra','hikaye')-->  Fýkra ve hikaye türündeki kitaplarýn adýný  ve türünü listeleyin.*/
+////////////////////////////////////////////////////////////
+/*select ograd,ogrsoyad,ogrenci.ogrno,kitapadi from ogrenci INNER JOIN	islem  ON islem.ogrno=ogrenci.ogrno INNER JOIN kitap on islem.kitapno=kitap.kitapno where sinif ='10B' or sinif='10C'   order by ograd--> */
+////////////////////////////////////////////////////////////
+/*select ograd,ogrsoyad,islem.islemno from ogrenci LEFT JOIN islem ON islem.islemno=ogrenci.ogrno -->  Kitap alan öðrencinin adý, soyadý, kitap aldýðý tarih listelensin. Kitap almayan öðrencilerinde listede görünsün.*/
+////////////////////////////////////////////////////////////
+/*select islem.atarih,ograd,ogrsoyad,ogrenci.ogrno from ogrenci LEFT JOIN islem ON islem.ogrno=ogrenci.ogrno where islem.atarih is null-->Kitap almayan öðrencileri listeleyin.*/
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////
 
@@ -39,3 +114,18 @@ use Kitaplik select * from Kitap where KitapAd='Palto' --> kitap adý Palto olaný
 ////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+
