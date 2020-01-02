@@ -156,3 +156,34 @@ HAVING users.ip LIKE '88%'
 
 
 
+
+TRIGGER
+
+/*CREATE TRIGGER `trigersil`
+AFTER INSERT ON `category` 
+FOR EACH ROW 
+  INSERT INTO comments SET comments.comment='LANET OLASI OLMUYOR'  */
+
+
+
+
+
+
+
+*********************************************************************************************************************************************************
+
+/*SELECT games.id'id where>50 , ve group by da kullanýldý Havýnde de id <60 oldu', games.name, 
+COUNT(comments.comment) from games Left JOIN comments ON games.id=comments.gameid where games.id>50 
+GROUP BY games.id HAVING games.id<60 order by COUNT(comments.comment) desc*/
+*********************************************************************************************************************************************************
+SELECT games.id, games.name, COUNT(comments.comment) as ' yorum sayýsý --> where comments.comment is 
+null' from games Left JOIN comments ON games.id=comments.gameid where comments.comment is null GROUP BY 
+games.id    ORDER BY   games.id desc;
+--> yani  GROUP BY kullanarak hem  öncesinde where ile (is null' la hemde aþaðýdaki 
+GROUP BY dan sonra HAVING COUNT(comments.comment)=0 kullanarak ayný sýralamayý yapabiliyoruz  )
+*********************************************************************************************************************************************************
+SELECT games.id, games.name, COUNT(comments.comment) as ' yorum sayýsý --> where comments.comment is 
+null' from games Left JOIN comments ON games.id=comments.gameid  GROUP BY games.id  HAVING 
+COUNT(comments.comment)=0   ORDER BY  games.id desc;
+
+*********************************************************************************************************************************************************
