@@ -158,3 +158,10 @@ if (jtp == null) {
             tbl.getColumnModel().getColumn(4).setPreferredWidth(200);
             tbl.setFont(lblFont);
         }
+//////////////////////////////////////////////////////////////////////////////
+DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+tbl.getColumnModel().getColumn(0).setCellRenderer(centerRenderer); // istenilen sutunu ortalar
+tbl.setDefaultRenderer(Object.class, centerRenderer);		   // tablodaki bütün satýrlarý ortalar
+
+     
