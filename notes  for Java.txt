@@ -164,4 +164,9 @@ centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 tbl.getColumnModel().getColumn(0).setCellRenderer(centerRenderer); // istenilen sutunu ortalar
 tbl.setDefaultRenderer(Object.class, centerRenderer);		   // tablodaki bütün satýrlarý ortalar
 
-     
+//////////////////////////////////////////////////////////////////////////////
+    String SqlStudentdDeleteQuery = "DELETE FROM `student` WHERE No = " + sug.getTxtNewNo().getText();
+
+--> DELETE ÝÞLEMÝNDE OLMAZ -->            //    stmt.executeQuery(SqlStudentdDeleteQuery);
+
+--> PreparedStatement preparedStmt = conn.prepareStatement(SqlStudentdDeleteQuery); ---> JAVA DA MYSQL DELETE ÝÇÝN BU KULLANILIR
