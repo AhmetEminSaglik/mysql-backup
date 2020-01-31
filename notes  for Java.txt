@@ -207,3 +207,46 @@ tbl.setDefaultRenderer(Object.class, centerRenderer);		   // tablodaki bütün sat
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+   searchQuery = "SELECT * FROM student WHERE name LIKE '%" + rsg.getTxtName().getText().trim() + "%'";
+
+  int studentNumberAccordingToQuery = 0;
+
+            rs = stmt.executeQuery(searchQuery);								
+
+            int counter = 0;
+
+            while (rs.next()) {	   						//   istenen kritere göre toplam sayý bulunur
+
+                rsg.DataOfTable[counter][0] = Integer.toString(counter + 1);	// jtable'ýn ilk dizine ([][],[])	 eklenir
+                rsg.DataOfTable[counter][1] = rs.getString("No");
+                rsg.DataOfTable[counter][2] = rs.getString("Name");
+                rsg.DataOfTable[counter][3] = rs.getString("Surname");
+                rsg.DataOfTable[counter][4] = rs.getString("Email");
+                rsg.DataOfTable[counter][5] = rs.getString("Phone");
+
+                counter++;
+            }
+
+            String ClearQuery = "SELECT * FROM student";
+            rs = stmt.executeQuery(ClearQuery);
+            int deleteRows = counter;
+            while (rs.next() && deleteRows < rsg.DataOfTable.length) {
+                rsg.DataOfTable[deleteRows][0] = null;		
+                rsg.DataOfTable[deleteRows][1] = null;
+                rsg.DataOfTable[deleteRows][2] = null;
+                rsg.DataOfTable[deleteRows][3] = null;
+                rsg.DataOfTable[deleteRows][4] = null;
+                rsg.DataOfTable[deleteRows][5] = null;
+
+                deleteRows++;
+            }
+
+            rsg.setSp(new JTable(rsg.DataOfTable, rsg.HeadersOfTable));
+            rsg.getJp().add(rsg.getSp());
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
