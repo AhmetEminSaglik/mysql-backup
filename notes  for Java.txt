@@ -1,4 +1,25 @@
+	
+------------------ IMAGE  EKLEME VE BOYUTUNU AYARLAMA ------------------
+ public JLabel getLblImage() {
+        if (lblImage == null) {
+            lblImage = new JLabel();
+            lblImage.setBounds(35, 20, getJf().getWidth() - 70, getJf().getHeight() - 70);
+            ImageIcon imageIconKtu = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("ktuLogo.png")));
+            Image imageKtu = imageIconKtu.getImage();
+            Image imageKtu2 = imageKtu.getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon i = new ImageIcon(imageKtu2);
+            lblImage.setIcon(i);
+
+        }
+
+        return lblImage;
+    }
+
 btn.setBorder(BorderFactory.createLineBorder(Color.GRAY, 4));
+
+System.out.println(au.getTxtOldPassword().getText().trim().length()); // þifredeki boþluklarý silerek sayar (sað ve soldaki boþluklarý)
+System.out.println(au.getTxtNewPassword1().getPassword().length == 0); // þifre uzunluðulunu buna bakarak belirleyebilirim
+            
 
 ///////////////////////////////////////////////////////////////////////////
    AudioInputStream stream = AudioSystem.getAudioInputStream(new File("src/Gui/baslangic_muzigi.wav"));
@@ -250,3 +271,19 @@ tbl.setDefaultRenderer(Object.class, centerRenderer);		   // tablodaki bütün sat
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+ if (Pattern.matches("^[a-zA-z0-9]+[@]{1}+[a-zA-z0-9]+[.]{1}[a-zA-z0-9]+S", sag.getTxtEmail().getText())) {
+                       //Email geçerli
+                    } else {
+                        //Email geçersiz
+                    }
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+import java.util.Date;  // ekledikten sonra
+
+    Date today = new Date(); 	 // kullanabiliriz

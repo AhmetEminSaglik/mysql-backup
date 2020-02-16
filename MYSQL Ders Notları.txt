@@ -1,4 +1,4 @@
-
+--> String.valueOf(au.getTxtOldPassword().getPassword()) //  javada  passwordden þifre alma 
 
 
 	mysql -u root -p
