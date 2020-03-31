@@ -100,7 +100,7 @@ public class Actions {
             String file = name.getText();
             File newFile1 = new File(getSelectedFile() + "/" + file);
             getOption().createFile(newFile1, type);
-            getTable().setTableData(new DefaultMutableTreeNode(getSelectedFile()));
+         	   getTable().setTableData(new DefaultMutableTreeNode(getSelectedFile()));
         }
     };
     // </New File Button>
@@ -131,7 +131,7 @@ public class Actions {
     };
     // </Paste Button>
 
-    // <addToPlaylist Button>
+    // <addToPlaylist Button>4
     public ActionListener addToPlaylist = (ActionEvet) -> {
         if (getSelectedFile().isDirectory()) {
             int added = 0;

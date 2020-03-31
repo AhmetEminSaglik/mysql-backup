@@ -1,3 +1,22 @@
+
+----------------------	 JLAYERED PANELDE  KATMANLARIN KARIÞMAMASI ÝÇÝN  NEW INTEGER KULLANIYORUZ  ----------------------	 
+
+
+ this.setBackground(new Color(255, 234, 167));
+         this.add(getLblImage(), new Integer(0));
+        this.add(getLblusername(), new Integer(1));
+        this.add(getLblPass(), new Integer(1));
+        this.add(getTxtusername(), new Integer(1));
+        this.add(getjPass(), new Integer(1));
+        this.add(getSignIn(), new Integer(1));
+       
+
+
+
+
+
+
+
 	
 ------------------ IMAGE  EKLEME VE BOYUTUNU AYARLAMA ------------------
  public JLabel getLblImage() {

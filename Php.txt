@@ -1,0 +1,108 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+yukarýdaki kod türkçe karakteri kullanabilmesi için gerekli koddur
+ve Türkçe karakterler 2 bit uzunluðundadýr 
+--------------------------------------------------------------------
+if(isset($_POST['formunButonundakiName'])){
+sayfaya ilk defa geliniyorsa boþ degerler için  
+hata mesajý bastýrýlmasýný engeller
+}
+
+--------------------------------------------------------------------
+$arr=[
+'udemy',
+'93academy',
+'erbilen.net'
+]  			--> dizi oluþturma
+
+
+--------------------------------------------------------------------
+count($arr)  --> dizi sayýsýný döndürür
+
+--------------------------------------------------------------------
+for($i=1;$i<=10;$i++):
+
+    echo $i.'<br>';
+    echo 'ahmet';
+
+	    endfor;
+
+--------------------------------------------------------------------
+
+foreach(ARRAY as KEY => VALUE){
+
+}
+
+Örnek :
+
+
+--------------------------------------------------------------------
+
+
+$UyeDetay=[
+    'ad'=> 'Ahmet',
+    'soyad'=>'Saðlýk',
+    'yas'=>22
+];
+
+foreach($UyeDetay as $key=>$val){
+    echo $key . ': ' . $val . '<br>';
+}
+
+ad: Ahmet
+soyad: Saðlýk
+yas: 22
+
+--------------------------------------------------------------------
+
+$i=10;
+while($i>0):
+    echo $i.': deneme <br>';
+    $i--;
+endwhile;
+
+?>
+
+-------------------------------------------------------------------- 	
+
+
+$ad ='Ahmet Emin';
+
+function adsoyad($soyad)
+{ global $ad;					// global $ad  --> ÖNEMLÝ
+return $ad . ' ' . $soyad;
+}
+
+echo adsoyad('SAÐLIK');
+
+-------------------------------------------------------------------- 	
+$ad ='Ahmet Emin';
+function adsoyad2($soyad){
+    return $GLOBALS['ad'] . ' ' . $soyad;     // $GLOBALS ['ad'] --> ÖNEMLÝ
+}
+ echo adsoyad2('Saðlýk');
+
+-------------------------------------------------------------------- 	
+
+$karakterSayisi=strlen($str);
+
+-------------------------------------------------------------------- 	
+Bu fonksiyon kýsaltýlan cümlenin eðer devamý var ise 3 nokta koyar
+
+function kisalt($str,$limit=10){
+    $karakterSayisi=strlen($str);
+if($karakterSayisi>=$limit){
+    $str=substr($str,0,$limit).'...';
+}
+return $str;
+
+}
+-------------------------------------------------------------------- 	
+-------------------------------------------------------------------- 	
+-------------------------------------------------------------------- 	
+-------------------------------------------------------------------- 	
+-------------------------------------------------------------------- 	
+-------------------------------------------------------------------- 	
+-------------------------------------------------------------------- 	
+-------------------------------------------------------------------- 	
+-------------------------------------------------------------------- 	
